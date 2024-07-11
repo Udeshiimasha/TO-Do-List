@@ -1,0 +1,71 @@
+.todo-form-container {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .todo-form h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  .todo-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .todo-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .todo-form .form-group input,
+  .todo-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .todo-form .form-group textarea {
+    resize: vertical;
+  }
+  
+  .todo-form .form-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+  }
+  
+  .todo-form .form-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .todo-form .form-buttons button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .todo-form .form-buttons button:hover {
+    background-color: #0056b3;
+  }
+  
+  .todo-form .form-buttons button[type="button"] {
+    background-color: #6c757d;
+  }
+  
+  .todo-form .form-buttons button[type="button"]:hover {
+    background-color: #5a6268;
+  }
+  
