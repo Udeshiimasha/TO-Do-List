@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import TodoForm from './TodoForm';
 import "./Home.css";
 import './TodoForm.css';
+import { toast } from 'react-toastify';
 
 Modal.setAppElement('#root');
 
@@ -20,7 +21,7 @@ const Home = () => {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get('/api/todos');
+      const response = await axios.get('http://localhost:5555/api/todos');
       setTodos(response.data);
     } catch (error) {
       console.error('Error fetching todos', error);
@@ -29,8 +30,9 @@ const Home = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/todos/${id}`);
+      await axios.delete(`http://localhost:5555/api/todos/${id}`);
       fetchTodos();
+      toast.success('Task deleted successfully!');
     } catch (error) {
       console.error('Error deleting todo', error);
     }
@@ -38,8 +40,9 @@ const Home = () => {
 
   const handleToggleComplete = async (todo) => {
     try {
-      await axios.put(`/api/todos/${todo.id}`, { ...todo, completed: !todo.completed });
+      await axios.put(`http://localhost:5555/api/todos/${todo.id}`, { ...todo, completed: !todo.completed });
       fetchTodos();
+      toast.success('Task status updated successfully!');
     } catch (error) {
       console.error('Error toggling complete status', error);
     }
@@ -62,6 +65,7 @@ const Home = () => {
   const handleFormSubmit = () => {
     fetchTodos();
     closeModal();
+    toast.success('Task saved successfully!');
   };
 
   return (

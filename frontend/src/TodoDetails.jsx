@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from './api';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function TodoDetails() {
   const { id } = useParams();
@@ -8,7 +10,7 @@ function TodoDetails() {
   const [todo, setTodo] = useState(null);
 
   useEffect(() => {
-    api.get(`/todos/${id}`)
+    api.get(`http://localhost:5555/api/todos/${id}`)
       .then(response => setTodo(response.data))
       .catch(error => console.error(error));
   }, [id]);
@@ -18,8 +20,11 @@ function TodoDetails() {
   }
 
   const handleDelete = () => {
-    api.delete(`/todos/${id}`)
-      .then(() => navigate('/'))
+    api.delete(`http://localhost:5555/api/todos/${id}`)
+      .then(() => {
+        navigate('/');
+      toast.success('Task deleted successfully!');
+  })
       .catch(error => console.error(error));
   };
 
@@ -30,6 +35,7 @@ function TodoDetails() {
       <p>Due: {new Date(todo.dueDate).toLocaleDateString()}</p>
       <p>{todo.completed ? 'Completed' : 'Incomplete'}</p>
       <button onClick={handleDelete}>Delete</button>
+      <button onClick={() => navigate('/')}>Back to Home</button>
     </div>
   );
 }

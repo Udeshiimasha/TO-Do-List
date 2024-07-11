@@ -22,7 +22,7 @@ app.get('/', (request, response) => {
 app.use('/api/todos', todoRoute);
 
 mongoose
-    .connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(mongoDBURL)
     .then(() => {
         console.log('App connected to database');
         app.listen(PORT, () => {
